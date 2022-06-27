@@ -1,6 +1,7 @@
 
 stages:
   - test
+  - build
   
 run_tests:
   stage: test
