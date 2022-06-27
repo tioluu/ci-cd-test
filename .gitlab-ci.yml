@@ -19,5 +19,5 @@ build_image:
   before_script:
     - docker login -u "gerrome" -p "gerrome6354"
   script:
-    - docker build -t gerromesieger/python-app-for-cicd:python-app-1.0 .
-    - docker push gerromesieger/python-app-for-cicd:python-app-1.0
+    - docker build -t gerrome/first-app:python-app-1.0 .
+    - docker push gerrome/first-app:python-app-1.0
