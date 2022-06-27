@@ -17,7 +17,7 @@ build_image:
   variables:
     DOCKER_TLS_CERTDIR: "/certs"
   before_script:
-    - docker login -u "gerrome" -p $REGISTRY_PASS "gerrome6354"
+    - docker login -u "gerrome" -p "gerrome6354"
   script:
-    - docker build -t GerromeSieger/python-app-for-cicd:python-app-1.0
-    - docker push GerromeSieger/python-app-for-cicd:python-app-1.0
+    - docker build -t gerromesieger/python-app-for-cicd:python-app-1.0
+    - docker push gerromesieger/python-app-for-cicd:python-app-1.0
