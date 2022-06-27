@@ -19,5 +19,5 @@ build_image:
   before_script:
     - docker login -u "gerrome" -p $REGISTRY_PASS "gerrome6354"
   script:
-    - docker build -t TestImage:latest
-    - docker push TestImage:latest
+    - docker build -t testimage:latest
+    - docker push testimage:latest
