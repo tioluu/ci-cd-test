@@ -19,5 +19,5 @@ build_image:
   before_script:
     - docker login -u "gerrome" -p $REGISTRY_PASS "gerrome6354"
   script:
-    - docker build -t testimage:latest
-    - docker push testimage:latest
+    - docker build -t GerromeSieger/python-app-for-cicd:python-app-1.0
+    - docker push GerromeSieger/python-app-for-cicd:python-app-1.0
