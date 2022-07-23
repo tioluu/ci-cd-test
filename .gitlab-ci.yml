@@ -1,4 +1,4 @@
-run_tess:
+run_tests:
   before_script:
     - echo "Preparing test data..."
   script:
