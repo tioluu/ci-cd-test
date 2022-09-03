@@ -9,7 +9,7 @@ stages:
 
 run_tests:
   stage: test
-  image: python:3.9-slim-buster
+  image: python:3.9.13-buster
   before_script:
     - apt-get update && apt-get install make
   script:
