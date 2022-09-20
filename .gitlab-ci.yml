@@ -3,4 +3,4 @@ job1:
   before_script:
     - apt-get update && apt-get install make
   script:
-    - make Test
+    - make Test 
