@@ -5,6 +5,9 @@ def test_home(client):
     assert b"Python" in resp.data
 
 
+print("I love Pytest")
+
+
 def test_page_content(client):
     resp = client.get("/")
 
