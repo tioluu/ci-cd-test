@@ -2,8 +2,14 @@ variables:
   IMAGE_NAME: amrmaro/demo-app
   IMAGE_TAG: python-app-1.0
 
+
+stages:
+  - test
+  - buid
+
 # Job 1
 run_tests:
+  stage: test
   image: python:3.9.14-slim-bullseye
   before_script:
     - apt-get update && apt-get install make
@@ -12,6 +18,7 @@ run_tests:
 
 # Job 2
 build_image:
+  stage: build
   image: docker:20.10.16
   services:
     - docker:20.10.16-dind
