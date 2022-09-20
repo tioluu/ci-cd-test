@@ -2,7 +2,7 @@ variables:
   IMAGE_NAME: amrmaro/demo-app
   IMAGE_TAG: python-app-1.0
 
-
+# I love CI/CD
 stages:
   - test
   - build
