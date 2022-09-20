@@ -5,7 +5,7 @@ variables:
 
 stages:
   - test
-  - buid
+  - build
 
 # Job 1
 run_tests:
