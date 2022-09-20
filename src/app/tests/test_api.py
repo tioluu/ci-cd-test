@@ -12,8 +12,11 @@ import json
 # assert resp_payload["processes"][0]["memory_percent"] > 0
 # assert len(resp_payload["processes"][0]["name"]) > 0
 
+print("Hello Dev")
 
 # Test the monitor API returns JSON results we expect
+
+
 def test_api_monitor(client):
     resp = client.get("/api/monitor")
 
