@@ -21,6 +21,6 @@ build_image:
     - docker login -u $DOCKER_USER -p $DOCKER_PASS
   script:
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
-    - docker push $IMAGE_NAME:$IMAGE:TAG
+    - docker push $IMAGE_NAME:$IMAGE_TAG
 
   
