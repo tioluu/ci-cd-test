@@ -1,6 +1,20 @@
-run_test:
+run_tests:
     image: python:3.10.7-bullseye
     before_script:
         - apt-get update && apt-get install make
     script:
         - make test
+build_image:
+    image: docker22.06.0-beta
+    services:
+        - docker:22.06.0-beta.0-dind
+    variable: 
+        DOCKER_TLS_CERTDIR: "/certs"
+        IMAGE_NAME: stephenobia/demo-python-app
+        IMAGE_TAG: python-app-1.1
+    before_script:
+        - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
+    script:
+        - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+        - docker push $IMAGE_NAME:$IMAGE_TAG
+
