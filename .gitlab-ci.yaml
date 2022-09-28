@@ -1,0 +1,6 @@
+run_test:
+    image: python:3.10.7-bullseye
+    before_script:
+        - apt-get update && apt-get install make
+    script:
+        - make test
