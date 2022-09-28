@@ -8,7 +8,7 @@ build_image:
     image: docker22.06.0-beta
     services:
         - docker:22.06.0-beta.0-dind
-    variable: 
+    variables: 
         DOCKER_TLS_CERTDIR: "/certs"
         IMAGE_NAME: stephenobia/demo-python-app
         IMAGE_TAG: python-app-1.1
