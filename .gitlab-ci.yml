@@ -11,6 +11,8 @@ run_tests:
   stage: test
   image: python:3.9-slim-buster
   before_script:
+    - export HTTP_PROXY=172.24.8.169:781
+    - export HTTPS_PROXY=172.24.8.169:781
     - apt-get update && apt-get install make
   script:
     - make test
@@ -24,6 +26,8 @@ build_image:
   variables:
     DOCKER_TLS_CERTDIR: "/certs"
   before_script:
+    - export HTTP_PROXY=172.24.8.169:781
+    - export HTTPS_PROXY=172.24.8.169:781
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
   script:
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
