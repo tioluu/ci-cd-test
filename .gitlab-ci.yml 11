@@ -1,0 +1,16 @@
+variables:
+  IMAGE_NAME: angelina2210/demo-app
+  IMAGE_TAG: python-app-1.0
+
+stages:
+  - test
+  - build
+  - deploy
+
+run_tests:
+  stage: test
+  image: python:3.9-slim-buster
+  before_script:
+    - apt-get update && apt-get install make
+  script:
+    - make test
