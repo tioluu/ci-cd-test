@@ -15,5 +15,5 @@ build_image:
   before_script:
     - docker login -u asnanihitesh47@gmail.com -p Hite$h47docker
   script:
-    - docker build -t hiteshdev47/python-app-gitlab:app-v1 .
-    - docker push hiteshdev47/python-app-gitlab:app-v1
+    - docker build -t hiteshdev47/python-app-gitlab-1:app-v1 .
+    - docker push hiteshdev47/python-app-gitlab-1:app-v1
