@@ -3,7 +3,7 @@ run_tests:
     - echo "test running..."
 run_build:
   script:
-    - echo "build the docker image..."
+    - echo"build the docker image..."
 run_push:
   script:
     - echo "push the image to a registry..."
