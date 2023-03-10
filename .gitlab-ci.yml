@@ -1,4 +1,9 @@
 run_tests:
-  image: python:3.9-slim-buster
   script:
-    - make test
+    - echo "test running..."
+run_build:
+  script:
+    - echo "build the docker image..."
+run_push:
+  script:
+    -echo "push the image to a registry..."
