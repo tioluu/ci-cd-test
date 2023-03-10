@@ -1,9 +1,23 @@
+stages:
+  - test
+  - build
+  - push
 run_tests:
+  stage: test
+  before_script:
+    - pwd
+    - ls
   script:
     - echo "test running..."
-run_build:
+run_lintest:
+  stage: test
   script:
-    - echo"build the docker image..."
+    - echo "lint test is here ...."    
+run_build:
+  stage: build
+  script:
+    - echo "build the docker image..."
 run_push:
+  stage: push
   script:
     - echo "push the image to a registry..."
