@@ -6,4 +6,4 @@ run_build:
     - echo "build the docker image..."
 run_push:
   script:
-    -echo "push the image to a registry..."
+    - echo "push the image to a registry..."
