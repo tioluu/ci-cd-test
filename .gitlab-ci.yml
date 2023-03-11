@@ -1,6 +1,6 @@
 workflow:
   rules:
-    - if: $CI_COMMIT_BRANCH != "main"
+    - if: $CI_COMMIT_BRANCH != "main" && $CI_PIPELINE_SOURCE != "merge_request_event"
       when: never
     - when: always
 stages:
@@ -19,10 +19,14 @@ run_lintest:
   script:
     - echo "lint test is here ...."    
 run_build:
+  only:
+    - main
   stage: build
   script:
     - echo "build the docker image..."
 run_push:
+  only:
+    - main
   stage: push
   script:
     - echo "push the image to a registry..."
