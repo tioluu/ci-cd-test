@@ -11,7 +11,7 @@ AZURE_SITE_NAME ?= pythonapp-$(shell git rev-parse --short HEAD)
 # Used by `test-api` target
 TEST_HOST ?= localhost:5000
 
-# Don't change
+# Don't change.
 SRC_DIR := src
 
 .PHONY: help lint lint-fix image push run deploy undeploy clean test-api .EXPORT_ALL_VARIABLES
