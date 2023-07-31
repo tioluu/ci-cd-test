@@ -18,7 +18,7 @@ build_image:
   variables:
     DOCKER_TLS_CERTDIR: "/certs"
   before_script:
-    - docker login -u $DOCKER_HUB_USER -p $DOCKER_PASSWORD
+    - echo $CI_BUILD_TOKEN docker login -u $DOCKER_HUB_USER -p $DOCKER_PASSWORD
   script:
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
     - docker push $IMAGE_NAME:$IMAGE_TAG
