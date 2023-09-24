@@ -2,6 +2,9 @@ variables:
   IMAGE_NAME: liudaku/demo-app
   IMAGE_TAG: python-app-1.0
 
+stages:
+  - test
+  - build
 
 run_tests:
   stage: test
