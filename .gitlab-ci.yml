@@ -1,5 +1,5 @@
 variables:
-  IMAGE_NAME: nanajanashia/demo-app
+  IMAGE_NAME: liudaku/demo-app
   IMAGE_TAG: python-app-1.0
 
 stages:
@@ -15,7 +15,6 @@ run_tests:
   script:
     - make test
 
-
 build_image:
   stage: build
   image: docker:20.10.16
@@ -29,13 +28,13 @@ build_image:
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
     - docker push $IMAGE_NAME:$IMAGE_TAG
 
-
 deploy:
   stage: deploy
   before_script:
     - chmod 400 $SSH_KEY
   script:
-    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@161.35.223.117 "
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@47.74.50.147 "
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
         docker ps -aq | xargs docker stop | xargs docker rm &&
         docker run -d -p 5000:5000 $IMAGE_NAME:$IMAGE_TAG"
+
