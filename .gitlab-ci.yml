@@ -17,7 +17,7 @@ build_image:
     IMAGE_NAME: techguyblogwaites/gitlab
     IMAGE_TAG: python-app-1.0
   before_script:
-    - docker login -u $DOCKER_USER -p $REGISTRY_PASS
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
   script:
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
     - docker push $IMAGE_NAME:$IMAGE_TAG
