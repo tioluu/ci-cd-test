@@ -1,4 +1,8 @@
 # Reference configuration example from https://www.youtube.com/watch?v=qP8kir2GUgo (GitLab Tutorial for Beginners)
+stages:
+  - test
+  - build
+
 run_tests:
   stage: test
   image: python:3.9-slim-buster
@@ -8,6 +12,7 @@ run_tests:
     - make test
 
 build_image:
+  stage: build
   image: docker:24.0
   services:
     - docker:24-dind
