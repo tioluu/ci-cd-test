@@ -2,6 +2,7 @@
 stages:
   - test
   - build
+  - deploy
 
 run_tests:
   stage: test
@@ -18,13 +19,23 @@ build_image:
     - docker:24-dind
   variables:
     DOCKER_TLS_CERTDIR: "/cert"
+  before_script: 
+      - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
   variables:
     IMAGE_NAME: techguyblogwaites/gitlab
     IMAGE_TAG: python-app-1.0
   before_script:
-    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
+    - $IMAGE_NAME:$IMAGE_TAG
   script:
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
     - docker push $IMAGE_NAME:$IMAGE_TAG
 
-
+deploy:
+  stage: deploy
+  before_script:
+    - chmod 400 $SSH_KEY
+  script:
+    - ssh -o StrictHostChecking=no -i $SSH_KEY unitedcyberxps@192.168.49.1 "
+        docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
+        docker ps -aq | xargs docker stop | xargs docker rm && 
+        docker run -d -p 5001:5001 $IMAGE_NAME:$IMAGE_TAG"
