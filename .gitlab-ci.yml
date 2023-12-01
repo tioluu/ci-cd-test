@@ -32,7 +32,11 @@ build_image:
 deploy:
   stage: deploy
   before_script:
+gitlab-ci.yml
   - chmod 400 $SSH_KEY
+=======
+    - chmod 777 $SSH_KEY
+>>>>>>> .gitlab-ci.yml
   script:
   - ssh -o StrictHostChecking=no -i $SSH_KEY unitedcyberxps@192.168.49.1 " docker
     login -u $REGISTRY_USER -p $REGISTRY_PASS && docker ps -aq | xargs docker stop
