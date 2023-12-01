@@ -32,7 +32,7 @@ build_image:
 deploy:
   stage: deploy
   before_script:
-gitlab-ci.yml
+  - gitlab-ci.yml
   - chmod 400 $SSH_KEY
 =======
     - chmod 777 $SSH_KEY
