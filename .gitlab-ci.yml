@@ -2,7 +2,12 @@ variables:
   IMAGE_NAME: "$REGISTRY_USER/demo-app"
   IMAGE_TAG: python-app-1.1
 
+stages:
+  - test
+  - build
+
 run_test:
+  stage: test
   image: python:3.9-slim-bookworm
   before_script:
     - apt-get update && apt-get install make
@@ -10,6 +15,7 @@ run_test:
     - make test
 
 build_image:
+  stage: build
   image: docker:24.0.7
   services:
     - docker:24.0.7-dind
