@@ -1,6 +1,6 @@
 run_test:
-    image: python
-    before_script:
-        - apt-get update && apt-get install make
-    script: 
-        - make test
+  image: python:3.9-slim-bookworm
+  before_script:
+    - apt-get update && apt-get install make
+  script: 
+    - make test
