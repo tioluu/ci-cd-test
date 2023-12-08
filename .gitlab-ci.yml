@@ -1,6 +1,6 @@
 variables:
   IMAGE_NAME: "$REGISTRY_USER/demo-app"
-  IMAGE_TAG: python-app-1.3
+  IMAGE_TAG: python-app-1.4
   IMAGE_NAME_TAG: ${IMAGE_NAME}:${IMAGE_TAG}
 
 stages:
