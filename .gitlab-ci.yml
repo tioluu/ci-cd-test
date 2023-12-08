@@ -44,6 +44,7 @@ deploy:
     - chmod og= $SSH_KEY 
     # - apk update && apk add openssh-client
     - echo $SSH_KEY
+    - cat $SSH_KEY
     - echo $SSH_USER
     - echo $VM_IPADDRESS
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY $SSH_USER@$VM_IPADDRESS "
