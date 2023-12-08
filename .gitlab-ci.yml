@@ -31,21 +31,9 @@ stages:
 
 deploy:
   stage: deploy
-  image: busybox:latest
-  before_script:
-    # - apt-get install -y sshpass
-    # - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )' 
-    # - eval $(ssh-agent -s)
-    # - echo "$SSH_KEY" | tr -d '\r' | ssh-add -
-    # - mkdir -p ~/.ssh
-    # - chmod 700 ~/.ssh
-    # - ssh-keyscan $VM_IPADDRESS >> ~/.ssh/known_hosts
-    # - chmod 644 ~/.ssh/known_hosts
+  image: ubuntu:20.04
   script:
-    - apk update && apk add openssh-client
-    - apk add sshpass
+    - apt-get install openssh-client
+    - apt-get install sshpass
     - sshpass $SSH_PASS ssh -o StrictHostKeyChecking=no $SSH_USER@$VM_IPADDRESS "echo someWord > file.txt"
-    #    echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin &&
-    #    docker ps -qf 'name=server' | xargs docker stop | xargs docker rm &&
-    #    docker run --name server -d -p 5000:5000 $IMAGE_NAME_TAG"
 
