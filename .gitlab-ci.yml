@@ -31,6 +31,7 @@ stages:
 
 deploy:
   stage: deploy
+  image: alpine:latest
   before_script:
     - apk add sshpass
     # - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )' 
