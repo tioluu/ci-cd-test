@@ -29,7 +29,7 @@ build_image:
     - docker build -t $IMAGE_NAME_TAG .
     - docker push $IMAGE_NAME_TAG
 
-0deploy:
+deploy:
   stage: deploy
   before_script:
     - chmod 400 $SSH_KEY
