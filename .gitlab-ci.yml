@@ -31,6 +31,7 @@ stages:
 
 deploy:
   stage: deploy
+  image: busybox:latest
   # before_script:
     # - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )' 
     # - eval $(ssh-agent -s)
