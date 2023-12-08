@@ -31,8 +31,8 @@ build_image:
 
 deploy:
   stage: deploy
-  before_script:
-    - chmod 400 $SSH_KEY
+  # before_script:
+  #   - chmod 400 $SSH_KEY
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@178.208.64.161 "
         echo $REGISTRY_PASSWORD | docker login -u $REGISTRY_USER --password-stdin &&
