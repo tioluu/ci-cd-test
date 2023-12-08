@@ -31,9 +31,9 @@ stages:
 
 deploy:
   stage: deploy
-  image: alpine:latest
+  # image: alpine:latest
   before_script:
-    - apk add sshpass
+    - apt-get install -y sshpass
     # - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )' 
     # - eval $(ssh-agent -s)
     # - echo "$SSH_KEY" | tr -d '\r' | ssh-add -
