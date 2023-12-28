@@ -1,0 +1,6 @@
+run_tests:
+    image: python:3.9-slim-buster
+    before_script:
+        - apt-get update && apt-get install -y make  # Use -y to auto-confirm installation
+    script:
+        - make test
