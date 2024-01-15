@@ -24,7 +24,7 @@ build_image:
 # service is an additional container that starts at the same time as build container, that the container can use during build
 #   faster to start container with certain builds than to install the module manually.
 #   service is used to get containers to talk to each other.
-  service:
+  services:
 #   specifying docker daemon. dind= dockerindocker
     - docker:20.10.16-dind
   #  since we want to be logged in before we do any pushes and builds
