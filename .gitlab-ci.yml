@@ -3,6 +3,7 @@ run_tests:
   image: python:3.9-slim-buster
 #execute same syntax as script, but before script. make temp files, install things, get things needed for main script
   before_script:
+    - pip install --upgrade pip
     - pip install make
   script:
     - make test
