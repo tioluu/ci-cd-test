@@ -1,0 +1,19 @@
+#job name
+run_tests:
+  image: python:3.9-slim-buster
+#execute same syntax as script, but before script. make temp files, install things, get things needed for main script
+  before_script:
+    - pip install --upgrade pip
+    - pip install make
+    - pip install build-essential
+  script:
+    - make test
+#specify a version of python image, done leave as python
+
+
+
+#gitlab runners installed on diff environments (shell executor). we can also execute on docker containers.
+#docker containers run based off images. default gitlab is ruby images
+#for our app, we need python, not ruby. we can override which image is used for each job.
+
+
