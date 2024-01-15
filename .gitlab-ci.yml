@@ -1,12 +1,9 @@
+#defined at the top of page to be global
 variables:
-  IMAGE_NAME: nanajanashia/demo-app
-  IMAGE_TAG: python-app-1.0
+  IMAGE_NAME: stedockerhub/balunapp
+  IMAGE_TAG: mlops1.0
 
-stages:
-  - test
-  - build
-  - deploy
-
+#job name
 run_tests:
   stage: test
   image: python:3.9-slim-buster
@@ -14,28 +11,37 @@ run_tests:
     - apt-get update && apt-get install make
   script:
     - make test
+#specify a version of python image, done leave as python
 
+
+# we need docker avaialble in docker container: docker in docker.
+# therefore we need to get an image that has docker available (image:docker:tag)
 
 build_image:
-  stage: build
+#  allows us to use docker commands in the image.
   image: docker:20.10.16
-  services:
+#  need docker daemon (service) in gitlab to let the container interact with dockerhub.
+# service is an additional container that starts at the same time as build container, that the container can use during build
+#   faster to start container with certain builds than to install the module manually.
+#   service is used to get containers to talk to each other.
+  service:
+#   specifying docker daemon. dind= dockerindocker
     - docker:20.10.16-dind
+  #  since we want to be logged in before we do any pushes and builds
   variables:
+#    cert to connect daemon and docker
     DOCKER_TLS_CERTDIR: "/certs"
   before_script:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
   script:
+    # the . shows where to build, from the source. -t is to tag the image
     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    # since we are on dockerhub, no need to specify registry. add registry at end
     - docker push $IMAGE_NAME:$IMAGE_TAG
 
 
-deploy:
-  stage: deploy
-  before_script:
-    - chmod 400 $SSH_KEY
-  script:
-    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@161.35.223.117 "
-        docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
-        docker ps -aq | xargs docker stop | xargs docker rm &&
-        docker run -d -p 5000:5000 $IMAGE_NAME:$IMAGE_TAG"
+#gitlab runners installed on diff environments (shell executor). we can also execute on docker containers.
+#docker containers run based off images. default gitlab is ruby images
+#for our app, we need python, not ruby. we can override which image is used for each job.
+
+
