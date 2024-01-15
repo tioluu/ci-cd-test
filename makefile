@@ -53,11 +53,11 @@ undeploy:  ## 💀 Remove from Azure
 	az group delete -n $(AZURE_RES_GROUP) -o table --no-wait
 
 test: venv  ## 🎯 Unit tests for Flask app
-	. $(SRC_DIR)/.venv/Scripts/activate \
+	. $(SRC_DIR)/.venv/bin/activate \
 	&& pytest -v
 
 test-report: venv  ## 🎯 Unit tests for Flask app (with report output)
-	. $(SRC_DIR)/.venv/Scripts/activate \
+	. $(SRC_DIR)/.venv/bin/activate \
 	&& pytest -v --junitxml=test-results.xml
 
 test-api: .EXPORT_ALL_VARIABLES  ## 🚦 Run integration API tests, server must be running 
