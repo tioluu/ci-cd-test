@@ -1,5 +1,5 @@
 run_test:
-  image: python:3.9-slim-buster
+  image: 3.9.18-slim-bookworm
   before_script:
     - apt-get update && apt-get install make
     - pip install --upgrade flask werkzeug
