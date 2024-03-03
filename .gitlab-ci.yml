@@ -2,5 +2,6 @@ run_test:
   image: python:3.9-slim-buster
   before_script:
     - apt-get update && apt-get install make
+    - pip install --upgrade flask werkzeug
   script:
     - make test
