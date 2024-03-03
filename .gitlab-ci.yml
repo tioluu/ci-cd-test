@@ -1,8 +1,12 @@
 run_test:
   image: python:3.9-slim-buster
   before_script:
-    - apt-get update && apt-get install -y make
+    - apt-get update && apt-get install -y python3-venv  # Install python3-venv for creating virtual environment
+    - python3 -m venv venv   # Create a virtual environment
+    - source venv/bin/activate   # Activate the virtual environment
   script:
-    - pip install --upgrade pip setuptools
-    - pip install -r requirements.txt  # Install your project dependencies
-    - make test
+    - pip install package1 package2 package3   # Install packages within the virtual environment
+    - make test   # Run your tests or other commands
+  after_script:
+    - deactivate   # Deactivate the virtual environment
+
