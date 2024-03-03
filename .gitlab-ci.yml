@@ -1,12 +1,6 @@
 run_test:
-  image: python:3.9-slim
-  before_script:
-    - apt-get update && apt-get install -y python3-venv  # Install python3-venv for creating virtual environment
-    - python3 -m venv venv   # Create a virtual environment
-    - source venv/bin/activate   # Activate the virtual environment
-  script:
-    - pip install package1 package2 package3   # Install packages within the virtual environment
-    - make test   # Run your tests or other commands
-  after_script:
-    - deactivate   # Deactivate the virtual environment
-
+    image: python:3.9-slim
+    before_script:
+      - apt-get update && apt-get make
+    script:
+      - make test
