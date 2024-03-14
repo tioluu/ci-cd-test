@@ -10,6 +10,4 @@ run_tests:
   before_script:
     - apt-get update && apt-get install make
   script:
-    - pip install -r requirements.txt
-    - python -m pytest
-
+    - test make
