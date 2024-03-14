@@ -6,10 +6,11 @@ stages:
 
 run_tests:
   stage: test
-  image: python:3.9-slim-buster
+  image: python:3.12-slim-bullseye
   before_script:
     - apt-get update && apt-get install make
   script:
-    - make test
+    - pip install -r requirements.txt
+    - python -m pytest
 
 
